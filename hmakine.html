@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hesap Makinesi</title>
+  <style>
+    #result {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <input type="number" id="num1" placeholder="Birinci sayı" />
+  <input type="number" id="num2" placeholder="İkinci sayı" />
+  <select id="operator">
+    <option value="add">Toplama</option>
+    <option value="subtract">Çıkarma</option>
+    <option value="multiply">Çarpma</option>
+    <option value="divide">Bölme</option>
+  </select>
+  <button onclick="calculate()">Hesapla</button>
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      var num1 = parseFloat(document.getElementById("num1").value);
+      var num2 = parseFloat(document.getElementById("num2").value);
+      var operator = document.getElementById("operator").value;
+      var result = document.getElementById("result");
+      
+      if (isNaN(num1) || isNaN(num2)) {
+        result.innerHTML = "Lütfen geçerli sayılar girin.";
+        return;
+      }
+      
+      switch (operator) {
+        case "add":
+          result.innerHTML = "Sonuç: " + (num1 + num2);
+          break;
+        case "subtract":
+          result.innerHTML = "Sonuç: " + (num1 - num2);
+          break;
+        case "multiply":
+          result.innerHTML = "Sonuç: " + (num1 * num2);
+          break;
+        case "divide":
+          if (num2 === 0) {
+            result.innerHTML = "Sıfıra bölme hatası.";
+          } else {
+            result.innerHTML = "Sonuç: " + (num1 / num2);
+          }
+          break;
+        default:
+          result.innerHTML = "Geçersiz işlem seçildi.";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
